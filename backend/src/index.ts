@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import authRouter from './routes/auth';
+import servicesRouter from './routes/services';
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 
 // routes
 app.use('/auth', authRouter);
+app.use('/services', servicesRouter);
 
 // health check
 app.get('/', (req, res) => {
