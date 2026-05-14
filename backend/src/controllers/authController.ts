@@ -20,10 +20,10 @@ export const handleSignup = async (req: Request, res: Response) => {
     const result = await registerUser(name, email, password);
     return res.status(201).json(result);
 
-  } catch (err: any) {
-    return res.status(err.status || 500).json({ 
-      statusCode: err.status || 500, 
-      message: err.message || 'Something went wrong' 
+  } catch (error: any) {
+    return res.status(error.status || 500).json({ 
+      statusCode: error.status || 500, 
+      message: error.message || 'Something went wrong' 
     });
   }
 };
@@ -39,10 +39,10 @@ export const handleLogin = async (req: Request, res: Response) => {
     const result = await loginUser(email, password);
     return res.status(200).json(result);
 
-  } catch (err: any) {
-    return res.status(err.status || 500).json({ 
-      statusCode: err.status || 500, 
-      message: err.message || 'Something went wrong' 
+  } catch (error: any) {
+    return res.status(error.status || 500).json({ 
+      statusCode: error.status || 500, 
+      message: error.message || 'Something went wrong' 
     });
   }
 };
@@ -58,10 +58,10 @@ export const getMyProfile = async (req: AuthRequest, res: Response) => {
 
     return res.status(200).json(myProfile);
 
-  } catch (err: any) {
+  } catch (error: any) {
     return res.status(500).json({ 
       statusCode: 500, 
-      message: err.message || 'Something went wrong' 
+      message: error.message || 'Something went wrong' 
     });
   }
 };

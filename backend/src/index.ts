@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import authRouter from './routes/auth';
 
 dotenv.config();
 
@@ -9,7 +10,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Health check
+// routes
+app.use('/auth', authRouter);
+
+// health check
 app.get('/', (req, res) => {
   res.json({ message: 'MenteCart API running ' });
 });
@@ -22,6 +26,6 @@ mongoose.connect(MONGO_URI)
     console.log(' MongoDB connected');
     app.listen(PORT, () => console.log(` Server on port ${PORT}`));
   })
-  .catch((err) => console.error(' MongoDB error:', err));
+  .catch((error) => console.error(' MongoDB error:', error));
 
 export default app;
