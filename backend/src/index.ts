@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import authRouter from './routes/auth';
 import servicesRouter from './routes/services';
 import cartRouter from './routes/cart';
+import bookingsRouter from './routes/bookings';
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use('/auth', authRouter);
 app.use('/services', servicesRouter);
 app.use('/cart', cartRouter);
+app.use('/bookings', bookingsRouter);
 
 // health check
 app.get('/', (req, res) => {
