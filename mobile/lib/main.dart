@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mentecart/screens/auth/login_screen.dart';
+import 'core/api/api_client.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await ApiClient.setupInterceptors();
   runApp(const MenteCartApp());
 }
 
@@ -17,7 +19,11 @@ class MenteCartApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LoginScreen(),
+      home: const Scaffold(
+        body: Center(
+          child: Text('MenteCart Loading...'),
+        ),
+      ),
     );
   }
 }
